@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "295522773374",
+    "project_id": "fir-user-operations",
+    "storage_bucket": "fir-user-operations.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:295522773374:android:3f53c02ec65ff0504b6b2f",
+        "android_client_info": {
+          "package_name": "com.mrcaracal.firebaseuseroperations"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "295522773374-12sdvh1aiqm8iveiloa0q2k1rsf3a5bf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcAgYqpg3XUqA-172h9gKfdBILJWvkPoI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "295522773374-12sdvh1aiqm8iveiloa0q2k1rsf3a5bf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
