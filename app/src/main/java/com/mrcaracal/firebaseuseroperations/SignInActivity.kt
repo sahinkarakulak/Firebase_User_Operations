@@ -12,13 +12,10 @@ import com.mrcaracal.firebaseuseroperations.databinding.ActivitySignInBinding
 class SignInActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignInBinding
-
     private lateinit var auth: FirebaseAuth
-
     private lateinit var GET: SharedPreferences
     private lateinit var SET: SharedPreferences.Editor
     private var durum: Boolean = false
-
     private var exitToast: Toast? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,28 +59,16 @@ class SignInActivity : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         if (auth.currentUser?.isEmailVerified!!) {
-                            Toast.makeText(
-                                applicationContext,
-                                "Welcome " + auth.currentUser?.email.toString(),
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Toast.makeText(applicationContext,"Welcome " + auth.currentUser?.email.toString(),Toast.LENGTH_SHORT).show()
                             val intent = Intent(applicationContext, HomeActivity::class.java)
                             startActivity(intent)
                             finish()
                         } else {
-                            Toast.makeText(
-                                applicationContext,
-                                "Your account not verify",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Toast.makeText(applicationContext,"Your account not verify",Toast.LENGTH_SHORT).show()
                         }
                     }
                 }.addOnFailureListener { exception ->
-                    Toast.makeText(
-                        applicationContext,
-                        exception.localizedMessage.toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(applicationContext,exception.localizedMessage.toString(),Toast.LENGTH_SHORT).show()
                 }
             }
         }

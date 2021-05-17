@@ -10,7 +10,6 @@ import com.mrcaracal.firebaseuseroperations.databinding.ActivitySignUpBinding
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignUpBinding
-
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,13 +19,6 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(view)
 
         auth = FirebaseAuth.getInstance()
-        val currentUser = auth.currentUser
-
-        if (currentUser != null) {
-            val intent = Intent(applicationContext, HomeActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
 
         binding.imgCreateAccount.setOnClickListener {
             val email = binding.edtUserEmil.text.toString()
@@ -36,19 +28,13 @@ class SignUpActivity : AppCompatActivity() {
             if (email.equals("") || pass1.equals("") || pass2.equals("")) {
                 Toast.makeText(applicationContext, "Please enter data", Toast.LENGTH_SHORT).show()
             } else if (!pass1.equals(pass2)) {
-                Toast.makeText(applicationContext, "Passwords are not the same", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(applicationContext, "Passwords are not the same", Toast.LENGTH_SHORT).show()
             } else {
-
                 auth.createUserWithEmailAndPassword(email, pass1).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         auth.currentUser?.sendEmailVerification()?.addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                Toast.makeText(
-                                    applicationContext,
-                                    "Verify your e-mail account",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Toast.makeText(applicationContext,"Verify your e-mail account",Toast.LENGTH_SHORT).show()
                                 val intent = Intent(applicationContext, SignInActivity::class.java)
                                 startActivity(intent)
                                 finish()
@@ -57,14 +43,9 @@ class SignUpActivity : AppCompatActivity() {
                     }
                 }.addOnFailureListener { exception ->
                     if (exception != null) {
-                        Toast.makeText(
-                            applicationContext,
-                            exception.localizedMessage,
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Toast.makeText(applicationContext,exception.localizedMessage,Toast.LENGTH_SHORT).show()
                     }
                 }
-
             }
         }
 
@@ -73,6 +54,5 @@ class SignUpActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
     }
 }

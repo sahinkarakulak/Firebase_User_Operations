@@ -10,7 +10,6 @@ import com.mrcaracal.firebaseuseroperations.databinding.ActivityForgotPassBindin
 class ForgotPassActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityForgotPassBinding
-
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,9 +21,7 @@ class ForgotPassActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         binding.imgResetPass.setOnClickListener {
-
             val email = binding.edtUserEmail.text.toString()
-
             if (email.equals("")) {
                 Toast.makeText(applicationContext, "Please enter data", Toast.LENGTH_SHORT).show()
             } else {
@@ -36,7 +33,6 @@ class ForgotPassActivity : AppCompatActivity() {
                     }
                 }
             }
-
         }
 
         binding.txtGoToLoginScreen.setOnClickListener {
@@ -44,6 +40,5 @@ class ForgotPassActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
     }
 }
